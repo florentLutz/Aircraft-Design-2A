@@ -32,7 +32,7 @@ model:
   performance:
     id: fastoad.performances.mission
     propulsion_id: fastoad.wrapper.propulsion.rubber_engine
-    mission_file_path: ./CeRAS_missions.yml
+    mission_file_path: ./design_mission.yml
     mission_name: MTOW_mission
     out_file: ../workdir/oad_sizing.csv
     adjust_fuel: true
