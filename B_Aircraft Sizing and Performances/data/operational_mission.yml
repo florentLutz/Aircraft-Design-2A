@@ -48,6 +48,29 @@ phases:
           mach: constant
           altitude:
             value: optimal_flight_level
+  diversion_climb:
+    engine_setting: climb
+    polar: data:aerodynamics:aircraft:cruise
+    thrust_rate: data:propulsion:climb:thrust_rate
+    time_step: 5.0
+    parts:
+      - segment: altitude_change
+        target:
+          altitude:
+            value: 10000.
+            unit: ft
+          equivalent_airspeed: constant
+      - segment: speed_change
+        target:
+          equivalent_airspeed:
+            value: 300.
+            unit: kn
+      - segment: altitude_change
+        target:
+          altitude:
+            value: 20000.
+            unit: ft
+          equivalent_airspeed: constant
   descent:
     engine_setting: idle
     polar: data:aerodynamics:aircraft:cruise
@@ -107,10 +130,14 @@ routes:
       - phase: descent
   diversion:
     range: ~distance
+    climb_parts:
+      - phase: diversion_climb
     cruise_part:
       segment: cruise
       engine_setting: cruise
       polar: data:aerodynamics:aircraft:cruise
+    descent_parts:
+      - phase: descent
 
 missions:
   op_mission:
