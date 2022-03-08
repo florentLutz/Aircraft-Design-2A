@@ -68,7 +68,7 @@ phases:
       - segment: altitude_change
         target:
           altitude:
-            value: 20000.
+            value: 10000.
             unit: ft
           equivalent_airspeed: constant
   descent:
