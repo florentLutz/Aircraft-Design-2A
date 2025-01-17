@@ -1,0 +1,23 @@
+title: Payload-Range diagram computation
+
+# List of folder paths where user added custom registered OpenMDAO components
+module_folders:
+
+# Input and output files
+input_file: ./payload_range_inputs.xml
+output_file: ./payload_range_outputs.xml
+
+# Definition of OpenMDAO model
+# Although "model" is a mandatory name for the top level of the model, its
+# sub-components can be freely named by user
+model:
+
+  payload_range:
+    id: fastoad.performances.payload_range
+    propulsion_id: fastoad.wrapper.propulsion.rubber_engine
+    mission_file_path: ::sizing_breguet
+    nb_grid_points: 33
+    mission_name: sizing
+    grid_random_seed: 002
+    min_block_fuel_ratio: 0.4
+
