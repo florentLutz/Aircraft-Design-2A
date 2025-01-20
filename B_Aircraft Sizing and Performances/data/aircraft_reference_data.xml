@@ -1,6 +1,6 @@
 <!--
-  ~ This file is part of FAST-OAD : A framework for rapid Overall Aircraft Design
-  ~ Copyright (C) 2021 ONERA & ISAE-SUPAERO
+  ~ This file is part of FAST-OAD_CS25
+  ~ Copyright (C) 2022 ONERA & ISAE-SUPAERO
   ~ FAST is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
   ~ the Free Software Foundation, either version 3 of the License, or
@@ -108,14 +108,14 @@
                             <from_wingMAC25 units="m" is_input="False">
                                 18.131701240000005<!--distance along X between 25% MAC of wing and 25% MAC of horizontal tail--></from_wingMAC25>
                             <local units="m" is_input="False">
-                                1.5761735289742422<!--X-position of the 25% of mean aerodynamic chord of horizontal tail w.r.t. leading edge of root chord--></local>
+                                1.5761735289742422<!--X-position of the 25% of mean aerodynamic chord of horizontal tail w.r.t. leading edge of center chord--></local>
                         </x>
                     </at25percent>
                 </MAC>
-                <root>
+                <center>
                     <chord units="m" is_input="False">
-                        4.194457341357644<!--chord length at root of horizontal tail--></chord>
-                </root>
+                        4.194457341357644<!--chord length at center of horizontal tail--></chord>
+                </center>
                 <tip>
                     <chord units="m" is_input="False">
                         1.2583372024072932<!--chord length at tip of horizontal tail--></chord>
@@ -331,6 +331,7 @@
             </taxi>
         </propulsion>
         <load_case>
+            <gust_intensity>0.0</gust_intensity>
             <lc1>
                 <U_gust units="m/s" is_input="True">
                     15.25<!--gust vertical speed for sizing load case 1 (gust with minimum aircraft mass)--></U_gust>
@@ -384,6 +385,12 @@
                 <payload units="kg">17000.</payload>
                 <main_route>
                     <range units="NM">2500.</range>
+                    <climb>
+                        <altitude units="ft">35000.0</altitude>
+                    </climb>
+                    <cruise>
+                        <altitude units="ft">35000.0</altitude>
+                    </cruise>
                 </main_route>
                 <diversion>
                     <distance units="NM" is_input="True">
@@ -421,7 +428,7 @@
                 <taxi_out>
                     <duration units="s" is_input="True">
                         540.0<!--duration of taxi-out phase in sizing mission--></duration>
-                    <thrust_rate units="s" is_input="True">
+                    <thrust_rate is_input="True">
                         0.25<!--thrust rate (between 0.0 and 1.0) during taxi-out phase in sizing mission--></thrust_rate>
                     <fuel units="kg" is_input="True">
                         276.0<!--mass of consumed fuel during taxi-out phase in sizing mission--></fuel>
@@ -469,7 +476,7 @@
                 <taxi_out>
                     <duration units="s" is_input="True">
                         540.0<!--duration of taxi-out phase in sizing mission--></duration>
-                    <thrust_rate units="s" is_input="True">
+                    <thrust_rate is_input="True">
                         0.25<!--thrust rate (between 0.0 and 1.0) during taxi-out phase in sizing mission--></thrust_rate>
                     <fuel units="kg" is_input="True">
                         276.0<!--mass of consumed fuel during taxi-out phase in sizing mission--></fuel>
@@ -517,7 +524,7 @@
                 <taxi_out>
                     <duration units="s" is_input="True">
                         540.0<!--duration of taxi-out phase in sizing mission--></duration>
-                    <thrust_rate units="s" is_input="True">
+                    <thrust_rate is_input="True">
                         0.25<!--thrust rate (between 0.0 and 1.0) during taxi-out phase in sizing mission--></thrust_rate>
                     <fuel units="kg" is_input="True">
                         276.0<!--mass of consumed fuel during taxi-out phase in sizing mission--></fuel>

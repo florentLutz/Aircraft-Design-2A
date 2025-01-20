@@ -18,8 +18,8 @@ model:
     id: fastoad.performances.mission
     propulsion_id: fastoad.wrapper.propulsion.rubber_engine
     out_file: ../workdir/operational_mission_study.csv
-    mission_file_path: ./operational_mission.yml
-    mission_name: op_mission
+    mission_file_path: ./design_mission.yml
+    mission_name: SPP_study
     adjust_fuel: true
     add_solver: true
     is_sizing: false

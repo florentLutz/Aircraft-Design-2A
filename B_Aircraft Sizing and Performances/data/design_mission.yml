@@ -3,7 +3,7 @@ phases:
     engine_setting: takeoff
     polar: data:aerodynamics:aircraft:takeoff
     thrust_rate: data:propulsion:initial_climb:thrust_rate
-    time_step: 0.2
+    time_step: 1.0
     parts:
       - segment: altitude_change
         target:
@@ -27,7 +27,7 @@ phases:
     engine_setting: climb
     polar: data:aerodynamics:aircraft:cruise
     thrust_rate: data:propulsion:climb:thrust_rate
-    time_step: 5.0
+    time_step: 10.0
     parts:
       - segment: altitude_change
         target:
@@ -48,12 +48,12 @@ phases:
         target:
           mach: constant
           altitude:
-            value: optimal_flight_level
+            value: ~altitude
   diversion_climb:
     engine_setting: climb
     polar: data:aerodynamics:aircraft:cruise
     thrust_rate: data:propulsion:climb:thrust_rate
-    time_step: 5.0
+    time_step: 10.0
     parts:
       - segment: altitude_change
         target:
@@ -69,14 +69,14 @@ phases:
       - segment: altitude_change
         target:
           altitude:
-            value: 20000.
+            value: 22000.
             unit: ft
           equivalent_airspeed: constant
   descent:
     engine_setting: idle
     polar: data:aerodynamics:aircraft:cruise
     thrust_rate: data:propulsion:descent:thrust_rate
-    time_step: 5.0
+    time_step: 10.0
     parts:
       - segment: altitude_change
         target:
@@ -125,8 +125,8 @@ routes:
       engine_setting: cruise
       polar: data:aerodynamics:aircraft:cruise
       target:
-        altitude: optimal_flight_level
-      maximum_flight_level: 360
+        altitude:
+          value: ~altitude
     descent_parts:
       - phase: descent
   diversion:
@@ -149,4 +149,22 @@ missions:
       - phase: taxi_in
       - reserve:
           ref: main_route
-          multiplier: 0.05
+          multiplier: 0.03
+  SPP_design:
+    parts:
+      - route: main_route
+      - route: diversion
+      - phase: holding
+      - phase: taxi_in
+      - reserve:
+          ref: main_route
+          multiplier: 0.03
+  SPP_study:
+    parts:
+      - route: main_route
+      - route: diversion
+      - phase: holding
+      - phase: taxi_in
+      - reserve:
+          ref: main_route
+          multiplier: 0.03
